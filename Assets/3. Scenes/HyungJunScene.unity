@@ -275,7 +275,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7d2e84c61f764f146a371631440e9308, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::BoxSpawner
-  boxPrefab: {fileID: 8179044440715904691, guid: 080e1cd557a071b42b170dc66f91527b, type: 3}
+  boxPrefab: {fileID: 810252513118984729, guid: 5dd3c3a8cc0cdce4bad62a07080bef93, type: 3}
   spawnPoints:
   - {fileID: 1877098287}
   - {fileID: 1784093498}
