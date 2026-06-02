@@ -6,6 +6,8 @@ public class BoxSpawner : MonoBehaviour
     public GameObject boxPrefab;
     public List<Transform> spawnPoints;
 
+    private Transform lastUsedPoint;
+
     void Start()
     {
         SpawnNewBox();
@@ -16,17 +18,20 @@ public class BoxSpawner : MonoBehaviour
         if (boxPrefab == null || spawnPoints == null || spawnPoints.Count <= 0) return;
 
         Transform selectedPoint = PickSpawnPoint();
+        lastUsedPoint = selectedPoint;
+
         GameObject newBox = Instantiate(boxPrefab, selectedPoint.position, selectedPoint.rotation);
         ItemBox itemBox = newBox.GetComponent<ItemBox>();
 
         if (itemBox != null)
-        {
             itemBox.OnBoxDepleted += SpawnNewBox;
-        }
     }
 
     private Transform PickSpawnPoint()
     {
-        return spawnPoints[Random.Range(0, spawnPoints.Count)];
+        if (spawnPoints.Count == 1) return spawnPoints[0];
+
+        List<Transform> available = spawnPoints.FindAll(p => p != lastUsedPoint);
+        return available[Random.Range(0, available.Count)];
     }
 }

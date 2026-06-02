@@ -22,6 +22,9 @@ public class ItemBox : MonoBehaviour
     void Start()
     {
         playerCamera = Camera.main.transform;
+        
+        foreach (var btn in GetComponentsInChildren<ItemButton>())
+            btn.targetBox = this;
 
         if (selectionPanel != null)
         {
